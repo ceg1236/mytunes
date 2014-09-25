@@ -12,12 +12,14 @@ var AppView = Backbone.View.extend({
       this.playerView.setSong(model.get('currentSong'));
     }, this);
 
-
-    this.model.on('change:songQueue', function(model){
-      this.playerView.setSong(model.get('currentSong'));
+    this.model.get('songQueue').on('add', function(){
+      this.songQueueView.render();
     }, this);
-    // how do we hook this with our playFirst in our Queue?
 
+    this.model.get('songQueue').on('remove', function(){
+      console.log("removed")
+      this.songQueueView.render();
+    }, this);
 
   },
 
@@ -25,7 +27,7 @@ var AppView = Backbone.View.extend({
     return this.$el.html([
       this.playerView.$el,
       this.libraryView.$el,
-      this.songQueueView.$el  //??
+      this.songQueueView.$el
     ]);
   }
 

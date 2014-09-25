@@ -10,18 +10,17 @@ var SongQueue = Songs.extend({
 
     this.on('ended', function(song) {
       this.shift();
-      this.playFirst(song);
+      this.playFirst();
     });
 
-    this.on('dequeue', function(song) {
+    this.on('dequeue', function() {
       this.remove();
-      this.playFirst(song);
+      this.playFirst();
     });
   },
 
-  playFirst: function(song) {
+  playFirst: function() {
     if(this.at(0)) {
-      this.at(0).set('currentSong', song);
       this.at(0).play();
     }
   }
