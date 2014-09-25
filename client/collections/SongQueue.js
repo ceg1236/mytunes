@@ -9,13 +9,14 @@ var SongQueue = Songs.extend({
     });
 
     this.on('ended', function(song) {
-
       this.shift();
       this.playFirst();
     });
 
     this.on('dequeue', function() {
+      // if only song in Q, remove and stop
       this.remove();
+
       this.playFirst();
     });
   },

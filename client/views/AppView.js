@@ -14,6 +14,11 @@ var AppView = Backbone.View.extend({
       this.libraryView.render();
     }, this);
 
+    // this.model.on('up', function(song) {
+    //   this.model.get('currentSong').attributes.up++;
+    //   this.libraryView.render();
+    // }, this);
+
     this.model.get('songQueue').on('add', function(){
       this.songQueueView.render();
     }, this);
@@ -21,10 +26,6 @@ var AppView = Backbone.View.extend({
     this.model.get('songQueue').on('remove', function(){
       this.songQueueView.render();
     }, this);
-
-    // this.model.get('currentSong').on('ended', function(){
-    //   debugger;
-    // }, this);
 
   },
 
