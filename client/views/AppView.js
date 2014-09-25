@@ -10,6 +10,8 @@ var AppView = Backbone.View.extend({
 
     this.model.on('change:currentSong', function(model){
       this.playerView.setSong(model.get('currentSong'));
+      this.model.get('currentSong').attributes.count++;
+      this.libraryView.render();
     }, this);
 
     this.model.get('songQueue').on('add', function(){
@@ -17,9 +19,12 @@ var AppView = Backbone.View.extend({
     }, this);
 
     this.model.get('songQueue').on('remove', function(){
-      console.log("removed")
       this.songQueueView.render();
     }, this);
+
+    // this.model.get('currentSong').on('ended', function(){
+    //   debugger;
+    // }, this);
 
   },
 
