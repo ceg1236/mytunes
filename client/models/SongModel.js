@@ -18,12 +18,4 @@ var SongModel = Backbone.Model.extend({
     this.trigger('ended', this);
   },
 
-  // up: function() {
-  //   this.trigger('up', this);
-  // },
-
-  // down: function() {
-  //   this.trigger('down', this);
-  // }
-
 });
